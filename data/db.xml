@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<library>
+   <book>
+      <title>Perl Best Practices</title>
+      <author>Damian</author>
+      <pages>542</pages>
+   </book>
+   
+   <book>
+      <title>Guida for dummies</title>
+      <author>Cinisio</author>
+      <pages>445</pages>
+   </book>
+
+</library>

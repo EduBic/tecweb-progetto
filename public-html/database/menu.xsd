@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="www.ristorantesakura.com" 
+	targetNamespace="www.ristorantesakura.com" elementFormDefault="qualified">
+	
+	<xs:element name="listaPortate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="portata" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="piatto" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<!--Controllare tipo annidato-->
+										<xs:element name="nome" type="xs:string"/>
+										<xs:element name="prezzo">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:decimal">
+														<xs:attribute name="valuta" .../>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										<xs:element name="descrizione" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="ID" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		<xs:complexType>
+	</xs:element>
+</xs:schema>

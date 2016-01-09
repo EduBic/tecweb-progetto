@@ -1,0 +1,21 @@
+
+<listaPortate>
+	<portata id="antipasto">
+		<piatto id="1">
+			</nome>Involtini giapponesi</nome>
+			<prezzo valuta="€">2.50</prezzo>
+			<descrizione></descrizione>
+		</piatto>
+		<piatto id="2">
+				</nome>Edamame</nome>
+				<prezzo valuta="€">3.00</prezzo>
+				<descrizione>Fagioli di soia lessi</descrizione>
+		</piatto>
+		<piatto>
+			</nome>Daikon</nome>
+			<prezzo valuta="€">3.00</prezzo>
+			<descrizione>Rapa gialla marinata</descrizione>
+		</piatto>
+	</portata>
+</listaPortate>
+
