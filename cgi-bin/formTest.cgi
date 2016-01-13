@@ -65,7 +65,7 @@ print $q->submit(
          );
       
                      
-print $q->end_form;
+
 
 print $q->end_html;
 
