@@ -1,6 +1,7 @@
 # Template di un file appartenente all'area riservata;
 
 # N.B. Alcuni documenti per questioni di sicurezza mettevano nel preambolo dopo \perl: '-Tw', ciò però non linka più i moduli PM.
+
 #!\Perl64\bin\perl
 
 use utf8;

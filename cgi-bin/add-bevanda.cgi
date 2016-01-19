@@ -1,4 +1,4 @@
-#!\xampp\perl\bin\perl
+#!\Perl64\bin\perl
 
 use utf8;
 use strict;
@@ -20,14 +20,14 @@ BaseFunctions::printStartHtml($q, 'Aggiungi bevanda - Area Riservata');
 if ($q->param()){
    # Si controlla il tipo di bevanda (ATTENZIONE!!!)
       # è stato premuto il pulsante conferma. Scrivere l'xml
-   display_results($q);
+   #display_results($q);
 }
 else {
    #mostra la form - si vuole aggiungere una bevanda.
 }
 
 # new code...
-   print $q->h3("pagina add-bevanda.cgi);
+   print $q->h3("pagina add-bevanda.cgi");
 
 BaseFunctions::printEndHtml($q);
 

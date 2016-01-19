@@ -12,6 +12,7 @@ my $q = new CGI;
 my $username = $q->param('username');
 my $password = $q->param('password');
 
+# Parte da FARE ???
 #my $xp = XML::XPath->new(filename => '../data/amministratori.xml');
 #$xpath_exp='//admin[username/text()="'.$username.'" and password/text()="'.$password.'"]';
 #my $nodeset = $xp->find($xpath_exp);

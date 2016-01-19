@@ -36,7 +36,7 @@
 				<nome>Insalata di alghe</nome>
 				<numero>4</numero>
 				<prezzo>6</prezzo>
-				<descrizione/>
+				<descrizione></descrizione>
 			</piatto>
 			<piatto id="agedashiToufu">
 				<nome>Agedashi Toufu</nome>
@@ -62,7 +62,7 @@
 				<prezzo>3</prezzo>
 				<descrizione>Zuppa con pasta di soia, alghe, toufu e cipollotti</descrizione>
 			</piatto>
-   </portata>
+		</portata>
 	
 		<portata id="carpaccio">
             <nome>Carpaccio</nome>
@@ -735,3 +735,4 @@
 		</listaAltreBevande>
 	</bevande>
 </menu>
+

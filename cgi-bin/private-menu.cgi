@@ -16,32 +16,12 @@ my $session = CGI::Session->load() or die $!;
 
 BaseFunctions::checkSession($session);
 
-my @input = (  'aggiungi', # name of submit Aggiungi [0]
-               'portata',  # name of hidden $nomeportata [1]
-               'modifica', # name of submit Modifica [2]
-               'idPiatto', # name of hidden $piatto [3]
-               'rimuovi',  # name of submit Rimuovi [4]
-               'idPiatto', # name of hidden $piatto [5]
-);
-
 BaseFunctions::printStartHtml('Men&ugrave; - Area Riservata');
 
-checkDelete();
-
-MenuFunctions::printMenu(1, @input);
+   print "<a href='private-menu-cibi.cgi'>CIBI</a> <br />
+            <a href='private-menu-bevande.cgi'>BEVANDE</a> <br />
+            <a href='private-menu-fissi.cgi'>MENU FISSI</a>";
 
 BaseFunctions::printEndHtml();
-
-
-# Subroutines
-
-sub checkDelete{
-   if ($q->param('rimuovi')){
-      #Rimuovi piatto nei param
-      #display comment
-      my $idPiatto = $q->param('idPiatto');
-      print "cancellato piatto: $idPiatto";
-   }
-}
 
 exit 0;

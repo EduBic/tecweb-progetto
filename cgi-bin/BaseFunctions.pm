@@ -13,7 +13,17 @@ use CGI::Session;
 package BaseFunctions;
 
 #
-# Subroutines che si occupa della stampa html di inizio pagina (deve seguire la chiamata a printEndHtml())
+# Metodo che permette di unificare il path per eventuali modifiche future
+#
+sub getFilenameMenu {
+   return "..\\data\\menu.xml";
+}
+
+
+
+
+#
+# Si occupa della stampa html di inizio pagina (deve seguire la chiamata a printEndHtml())
 #
 sub printStartHtml {
 
@@ -80,8 +90,32 @@ sub checkSession {
 		#my $avviso="Non hai ancora effettuato l'accesso all'area riservata.";
         print $session->header(-location=>"../accesso-negato.html");
         exit;
-	}
-    
+	}   
+}
+
+#
+#  Inizializza la LibXML per poter eseguire query nel file specificato in $filename
+#
+sub initLibXML {
+
+   my $filename = "..\\data\\menu.xml"; # ATTENZIONE path Windows
+   my $parser = XML::LibXML->new();
+   
+   return $parser->parse_file($filename); 
+}
+
+
+
+
+sub meth {
+
+   my ($form, $form2) = @_;
+
+print $form->{add_piatto}."<br/>";
+print $form->{del}."<br/>";
+
+print $form2->{eccomi};
+
 }
 
 # Un modulo perl termina sempre per 1
