@@ -16,11 +16,18 @@ my $session = CGI::Session->load() or die $!;
 
 BaseFunctions::checkSession($session);
 
-BaseFunctions::printStartHtml('Men&ugrave; - Area Riservata');
+BaseFunctions::printStartHtml('Categorie - Men&ugrave; - Area Riservata');
 
-   print "<a href='private-menu-cibi.cgi'>CIBI</a> <br />
-            <a href='private-menu-bevande.cgi'>BEVANDE</a> <br />
-            <a href='private-menu-fissi.cgi'>MENU FISSI</a>";
+   print $q->h3('Categorie men&ugrave;');
+   print $q->p('Scegli la categoria');
+   
+   print "<ul>
+            <li><a href='private-menu-cibi.cgi'>Cibi</a></li>
+            <li><a href='private-menu-bevande.cgi'>Bevande</a></li>
+            <li><a href='private-menu-fissi.cgi'>Men&ugrave; fissi</a></li>
+         </ul>";
+         
+   # Spazio pubblicitario dei piatti che cambiano grazie a javascript
 
 BaseFunctions::printEndHtml();
 

@@ -14,7 +14,7 @@ my $q = new CGI;
 
 BaseFunctions::printStartHtml('Men&ugrave; - Area Riservata');
 
-MenuFunctions::printMenu(0);
+# MenuFunctions::printMenu(0); Da implementare
 
 BaseFunctions::printEndHtml();
 

@@ -3,17 +3,8 @@
 	<cibo>
 		<portata id="antipasto">
 			<nome>Antipasto</nome>
-			<piatto id="involtiniGiapponesi">
-				<nome>Involtini Giapponesi</nome>
-				<numero>1</numero>
-				<prezzo>2.5</prezzo>
-			</piatto>
-			<piatto id="edamame">
-				<nome>Edamame</nome>
-				<numero>1a</numero>
-				<prezzo>3</prezzo>
-				<descrizione>Fagioli di soia lessi</descrizione>
-			</piatto>
+			
+			
 			<piatto id="daikon">
 				<nome>Daikon</nome>
 				<numero>1b</numero>
@@ -62,7 +53,22 @@
 				<prezzo>3</prezzo>
 				<descrizione>Zuppa con pasta di soia, alghe, toufu e cipollotti</descrizione>
 			</piatto>
-   </portata>
+		
+   
+   
+   
+      
+      
+      
+      
+      
+      <piatto id="asd">
+                     <nome>asd</nome>
+                     <numero>12</numero>
+                     <prezzo>3</prezzo>
+                     <descrizione>sdneod</descrizione>
+         </piatto>
+      </portata>
 	
 		<portata id="carpaccio">
             <nome>Carpaccio</nome>
@@ -549,7 +555,7 @@
 
 	<bevande>
 		<listaVini>
-            <nome>Vini</nome>
+            <nome>Vini Macrì</nome>
 			<vino id="möetEChandonRéserveImpériale">
 				<nome>Möet &amp; Chandon Réserve Impériale</nome>
 				<descrizione>champagne</descrizione>

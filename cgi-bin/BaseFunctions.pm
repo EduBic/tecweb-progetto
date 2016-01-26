@@ -5,20 +5,53 @@
 #
 
 # N.B. Package in cui si collocano le funzioni principali per la creazione delle pagine del sito
-use utf8;
+#use utf8;
 use strict;
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
+use XML::LibXML;
 use CGI::Session;
 
 package BaseFunctions;
 
+
 #
-# Metodo che permette di unificare il path per eventuali modifiche future
+# Permette di unificare il path per eventuali modifiche future
 #
-sub getFilenameMenu {
+sub getFilename {
    return "..\\data\\menu.xml";
 }
 
+#
+# Restituisce 1 se l'id passato come parametro esiste nel database di riferimento, altrimenti 0
+#
+sub existElement {
+
+   my $query = $_[0];
+   my $doc = initLibXML();
+   
+   if ($doc->findnodes($query)) {
+      return 1;
+   } 
+   else {
+      return 0;
+   }
+}
+
+#
+# Scrive il file xml in seguito alle modifiche
+#
+sub writeFile {
+
+      my $doc = $_[0];
+      my $file = getFilename(); # Da cambiare se si intende scrivere le modifiche su un altro file
+      
+      if($doc) {
+         open(OUT, ">:utf8".$file);
+         flock(OUT, 2);
+         print OUT $doc->toString;
+         close(OUT);
+      }
+}
 
 
 
@@ -36,7 +69,9 @@ sub printStartHtml {
    <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
       <title> $title </title>
-   </head>";
+   </head>
+   <body>
+      <div><a href='logout.cgi'>Esci</a></div>";
 }
 
 #
@@ -98,24 +133,10 @@ sub checkSession {
 #
 sub initLibXML {
 
-   my $filename = "..\\data\\menu.xml"; # ATTENZIONE path Windows
+   my $filename = getFilename; # ATTENZIONE path Windows
    my $parser = XML::LibXML->new();
    
    return $parser->parse_file($filename); 
-}
-
-
-
-
-sub meth {
-
-   my ($form, $form2) = @_;
-
-print $form->{add_piatto}."<br/>";
-print $form->{del}."<br/>";
-
-print $form2->{eccomi};
-
 }
 
 # Un modulo perl termina sempre per 1

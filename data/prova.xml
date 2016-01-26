@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+<bevande>
+		<listaVini>
+            <nome>Vini Macrì</nome>
+			<vino id="möetEChandonRéserveImpériale">
+				<nome>Möet &amp; Chandon Réserve Impériale</nome>
+				<descrizione>champagne</descrizione>
+				<prezzo>55</prezzo>
+			</vino>
+            <vino id="gHMumm">
+                <nome>G.H. Mumm</nome>
+                <descrizione>champagne</descrizione>
+                <prezzo>45</prezzo>
+            </vino>
+      </listaVini>
+</bevande>
+</menu>

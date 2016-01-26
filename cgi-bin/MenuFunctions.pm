@@ -5,9 +5,10 @@
 #
 
 # N.B. Package in cui si collocano le funzioni principali per la creazione delle pagine inerenti al menù ristorativo
-use utf8;
-use strict;
+#use utf8;
+#use strict;
 use CGI::Carp qw(warningsToBrowser fatalsToBrowser);
+use XML::LibXML;
 use CGI::Session;
 
 package MenuFunctions;
@@ -26,7 +27,7 @@ sub printMenuCibi {
    my $doc = BaseFunctions::initLibXML();
    
    # Variabili generali
-   my $valuta = '€';
+   my $valuta = "€";
    
    # sub printCibo() Print sezione cibo (da portare in funzione)
    my $query = "/menu/cibo/portata";   # Query primaria
@@ -52,7 +53,8 @@ sub printMenuCibi {
       if($admin) {
          BaseFunctions::printStartForm('add-piatto', $pathR->{add_piatto}, 'GET');
             print "<input class='pulsante' type='submit' name='aggiungi' value='Aggiungi' />
-                <input type='hidden' name='idPortata' value='$idPortata' />";
+                <input type='hidden' name='idPortata' value='$idPortata' />
+                 <input type='hidden' name='nomePortata' value='$nomePortata' />";
          BaseFunctions::printEndForm();
       }
       
@@ -70,15 +72,20 @@ sub printMenuCibi {
                print "<dt>$numero - $nome <span class='prezzo'>$valuta $prezzo</span>";
                
                if($admin) {
-                  BaseFunctions::printStartForm('mod-Bevanda', $pathR->{mod_piatto}, 'GET');
+                  BaseFunctions::printStartForm('mod-piatto', $pathR->{mod_piatto}, 'GET');
                   print "<span class='pulsanti'>
                            <input class='pulsante' type='submit' name='modifica' value='Modifica' />
-                           <input type='hidden' name='idPiatto' value='$idPiatto' />";
+                           <input type='hidden' name='idPiatto' value='$idPiatto' />
+                           <input type='hidden' name='nome' value='$nome' />
+                           <input type='hidden' name='numero' value='$numero' />
+                           <input type='hidden' name='descrizione' value='$descrizione' />
+                           <input type='hidden' name='prezzo' value='$prezzo' />";
                   BaseFunctions::printEndForm();
                   
-                  BaseFunctions::printStartForm('del-Bevanda', $pathR->{private_menu}, 'GET');
+                  BaseFunctions::printStartForm('del-piatto', $pathR->{private_menu}, 'GET');
                   print "  <input class='pulsante' type='submit' name='rimuovi' value='Rimuovi' />
                            <input type='hidden' name='idPiatto' value='$idPiatto' />
+                           <input type='hidden' name='nome' value='$nome' />
                         </span>";
                   BaseFunctions::printEndForm();
                }
@@ -95,12 +102,6 @@ sub printMenuCibi {
 }
 
 
-    
-   #printListaBevande(1, '/menu/bevande/listaVini/vino', 'Vini', $doc);                 # listaVini e vino
-   #printListaBevande(1, '/menu/bevande/listaBirre/birra', 'Birre', $doc);              # listaBirre e birre
-   #printListaBevande(1, '/menu/bevande/listaAltreBevande/bevanda', 'Bevande', $doc);   # listaAltreBevande e Bevanda
-  
-
 #
 #  Sub interna al modulo
 #
@@ -114,7 +115,7 @@ sub printMenuBevande {
       # Variabili generali
       my $valuta = '€';
       
-      # ATTENZIONE manca submit inserimento portate.
+      # ATTENZIONE manca submit inserimento liste bevande.
       #if($admin) {
             #  BaseFunctions::printStartForm();
       #           print $q->submit( -name => ''
@@ -125,6 +126,8 @@ sub printMenuBevande {
       my $nomeLista = $doc->findnodes($queryLista."/nome");
 
       print "<dl class='portata' id='$nomeLista'>";
+      print $q->p('Da Perl: Antonino Macrì - Da XML:'.$nomeLista);
+      print $doc->encoding();
       print "<h3>$nomeLista";
       
       if($admin) {

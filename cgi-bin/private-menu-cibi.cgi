@@ -21,9 +21,13 @@ my %path = (   add_piatto => 'add-piatto.cgi',
                del_piatto => 'private-menu-cibi.cgi',
 );
 
-BaseFunctions::printStartHtml('Men&ugrave; - Area Riservata');
+BaseFunctions::printStartHtml('Cibi - Men&ugrave; - Area Riservata');
 
-checkDelete();
+my $message = checkDelete();
+
+print $q->a({-href => 'private-menu.cgi'}, 'Torna alle categorie men&ugrave;');
+
+print "<p>$message</p>";
 
 MenuFunctions::printMenuCibi(1, \%path);
 
@@ -34,10 +38,26 @@ BaseFunctions::printEndHtml();
 
 sub checkDelete{
    if ($q->param('rimuovi')){
-      #Rimuovi piatto nei param
-      #display comment
+      
+      # Raccolta parametri
       my $idPiatto = $q->param('idPiatto');
-      print "cancellato piatto: $idPiatto";
+      my $nome = $q->param('nome');
+      
+      if (BaseFunctions::existElement("menu/cibo/portata/piatto[\@id = '$idPiatto']")) {
+         # Init LibXML
+         my $doc = BaseFunctions::initLibXML();
+         my ($element) = $doc->findnodes("menu/cibo/portata/piatto[\@id = '$idPiatto']");
+         $element->unbindNode;
+         
+         # Scrivo sul file
+         BaseFunctions::writeFile($doc);
+      
+         return "Rimozione del piatto $nome effettuata con successo";
+      }
+      else {
+      
+         return "Rimozione del piatto $nome non effettuata!!!"
+      }
    }
 }
 
